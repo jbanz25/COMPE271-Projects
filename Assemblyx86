@@ -1,0 +1,17 @@
+/** Assembly Code by Jacob Bananal, RED ID 820416396**/
+
+asm (
+     "_uLongLFSR32:;"               //According to the codeblock, this was how you mix c and assembly x86 together
+     " pushl %ebp;"
+     " movl %esp, %ebp;" //setup of the code
+
+     " movl 8(%ebp), %edx;" // index 1 = edx and edx = starting_state
+     " popl %ebp;" // moves the ebp from the stack
+     " movl %edx, %eax;" //eax = starting_state above
+     " andl $1, %eax;" // puts at index 0
+     " negl %eax;" //turns the eax to neg
+     " andl $9, %eax;" // puts it at index 1
+     " shrl $1, %edx;" // makes both of the indexes align with each other
+     " xorl %edx, %eax;" //edx ^ eax which will make the result
+     " ret"
+     );
